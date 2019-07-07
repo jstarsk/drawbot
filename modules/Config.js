@@ -1,24 +1,24 @@
-var jsonfile = require('jsonfile')
+let jsonfile = require('jsonfile');
 
-var Config = (file, callback) => {
-    var c = {}
+let Config = (file, callback) => {
+    var c = {};
 
-    c.data = {}
+    c.data = {};
     c.save = (cb) => {
-        jsonfile.writeFile(file, c.data,  {spaces: 2, EOL: '\r\n'}, function (err) {
-          console.error(err)
-          if(cb!=undefined) cb()
+        jsonfile.writeFile(file, c.data, {spaces: 2, EOL: '\r\n'}, function (err) {
+            console.error(err);
+            if (cb !== undefined) cb()
         })
-    }
+    };
 
-    var open = (cb) => {
+    let open = (cb) => {
         jsonfile.readFile(file, (err, o) => {
-            c.data = o
-            if(cb!=undefined) cb()
+            c.data = o;
+            if (cb !== undefined) cb()
         })
-    }
-    open(callback)
+    };
+    open(callback);
 
     return c
-}
-module.exports = Config
+};
+module.exports = Config;
